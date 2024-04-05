@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "e-learning"
+version = "0.1.0"
+description = "Projeto de uma platforma para apreendizado online. Baseado no livro DJANGO-4-By-Example."
+authors = ["Jorge Luiz Plautz <jorge.plautz@gmail.com>"]
+license = "GLPV3"
+readme = "README.md"
+packages = [{include = "e_learning"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pillow = "^10.3.0"
+django = "^5.0.4"
+django-braces = "^1.15.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.1.1"
+pytest-cov = "^4.1.0"
+taskipy = "^1.12.2"
+blue = "^0.9.1"
+isort = "^5.13.2"
+ruff = "^0.3.3"
+
+[tool.ruff]
+line-length = 79
+exclude = ['.venv', 'migrations']
+
+[tool.isort]
+profile = "black"
+line_length = 79
+extend_skip = ['migrations']
+
+[tool.pytest.ini_options]
+pythonpath = "."
+# filterwarnings = ["ignore::UserWarning", "error", 'ignore::DeprecationWarning',]
+
+[tool.blue]
+extend-exclude = '(migrations/)'
+
+[tool.taskipy.tasks]
+lint = 'ruff check . && blue --check . --diff'
+format = 'blue .  && isort .'
+# run = 'uvicorn fast_zero.app:app --reload'
+pre_test = 'task lint'
+test = 'pytest -s -x --cov=educa -vv' 
+post_test = 'coverage html'
+
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
