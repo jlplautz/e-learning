@@ -1,5 +1,7 @@
 from django.urls import path
+
 from educa.courses.views import CourseListView
+
 from . import views
 
 urlpatterns = [

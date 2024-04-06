@@ -12,6 +12,7 @@ python = "^3.11"
 pillow = "^10.3.0"
 django = "^5.0.4"
 django-braces = "^1.15.0"
+django-embed-video = "^1.4.9"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^8.1.1"
