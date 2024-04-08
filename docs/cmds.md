@@ -1,5 +1,5 @@
 ## Comando no terminal para verificar os Courses
-``cmd
+```cmd
 python manage.py dumpdata courses --indent=2
 [
 {
